@@ -1,0 +1,79 @@
+filebeat.inputs:
+  # 数据同步
+- type: log  
+  paths:
+    - /home/sync-data/default/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: default
+- type: log     
+  paths:
+    - /home/sync-data/sql/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: sql
+  # hyperf_1
+- type: log  
+  paths:
+    - /home/hyperf_1/default/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: default
+- type: log     
+  paths:
+    - /home/hyperf_1/sql/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: sql    
+  # hyperf_2
+- type: log  
+  paths:
+    - /home/hyperf_2/default/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: default
+- type: log     
+  paths:
+    - /home/hyperf_2/sql/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: sql    
+  # hyperf_3
+- type: log  
+  paths:
+    - /home/hyperf_3/default/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: default
+- type: log     
+  paths:
+    - /home/hyperf_3/sql/*.log
+  # multiline:
+  #     pattern: ^\d{4}
+  #     negate: true
+  #     match: after
+  fields:
+    doc_type: sql    
+output.logstash: # 输出地址
+  hosts: ["192.168.109.100:5044"]  

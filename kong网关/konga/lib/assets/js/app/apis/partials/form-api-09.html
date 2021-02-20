@@ -1,0 +1,87 @@
+<div class="form-group" ng-class="{'has-error' : errors.name}">
+    <label class="col-sm-4 control-label">名称 <br><em><small class="help-block">选项</small></em></label>
+    <div class="col-sm-7">
+        <input ng-model="api.name" class="form-control">
+        <div class="text-danger" ng-if="errors.name" data-ng-bind="errors.name"></div>
+        <p class="help-block">API名称. 如果没有特殊, 默认为 <code>请求域名</code> 或者 <code>请求路径</code>.</p>
+    </div>
+</div>
+<div class="form-group" ng-class="{'has-error' : errors.request_host}">
+    <label class="col-sm-4 control-label">请求域名
+        <br><em><small class="help-block">半选项</small></em></label>
+    <div class="col-sm-7">
+        <input ng-model="api.request_host" class="form-control">
+        <div class="text-danger" ng-if="errors.request_host" data-ng-bind="errors.request_host"></div>
+        <p class="help-block">
+            如果DNS地址指向你的API地址. 譬如, <code>mockbin.com</code>. 至少 <code>请求域名</code> 或者 <code>请求路径</code> 或者两者都指向.
+        </p>
+
+    </div>
+</div>
+<div class="form-group" ng-class="{'has-error' : errors.request_path}">
+    <label class="col-sm-4 control-label">请求路径
+        <br><em><small class="help-block">半选项</small></em></label>
+    <div class="col-sm-7">
+        <input ng-model="api.request_path" class="form-control">
+        <div class="text-danger" ng-if="errors.request_path" data-ng-bind="errors.request_path"></div>
+        <p class="help-block">
+            如果路径地址指向你的API地址. 譬如, <code>/someservice</code>. 至少 <code>请求域名</code> 或者 <code>请求路径</code> 或者两者都指向.
+        </p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-4 control-label">请求路径目录
+        <br><em><small class="help-block">选项</small></em></label>
+    <div class="col-sm-7">
+        <input
+
+                bs-switch
+                ng-model="api.strip_request_path"
+                switch-size="small"
+                type="checkbox"
+                switch-on-text="YES"
+                switch-off-text="NO"
+        >
+        <!--<select ng-model="api.strip_request_path"-->
+        <!--ng-change="updateApi(api)"-->
+        <!--class="form-control"-->
+        <!--ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">-->
+        <!--</select>-->
+        <p class="help-block">
+            请求路径目录在代理的最终请求API之前. 譬如需要请求 <code>/someservice/hello</code> 将被解析成 <code>upstream_url/hello</code>. 默认是否.
+        </p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-4 control-label">保留域名
+        <br><em><small class="help-block">选项</small></em></label>
+    <div class="col-sm-7">
+        <input
+
+                bs-switch
+                ng-model="api.preserve_host"
+                switch-size="small"
+                type="checkbox"
+                switch-on-text="YES"
+                switch-off-text="NO"
+        >
+        <!--<select ng-model="api.preserve_host"-->
+        <!--ng-change="updateApi(api)"-->
+        <!--class="form-control"-->
+        <!--ng-options="o.v as o.n for o in [{ n: 'No', v: false }, { n: 'Yes', v: true }]">-->
+        <!--</select>-->
+        <p class="help-block">
+            保留原 <code>Host</code> 主机头发送到客户端, 替换为 <code>hostname</code> 主机名 <code>upstream_url</code>. 默认是否.
+        </p>
+    </div>
+</div>
+<div class="form-group " ng-class="{'has-error' : errors.upstream_url}">
+    <label class="col-sm-4 control-label">上行流URL</label>
+    <div class="col-sm-7">
+        <input type="url" ng-model="api.upstream_url" class="form-control">
+        <div class="text-danger" ng-if="errors.upstream_url" data-ng-bind="errors.upstream_url"></div>
+        <p class="help-block">
+            基础的目的地URL指向你的API服务器, URL将采用代理请求转发. 譬如, <code>https://mockbin.com</code>.
+        </p>
+    </div>
+</div>
