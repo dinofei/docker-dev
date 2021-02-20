@@ -1,2 +1,12 @@
 .vscode
-data/*
+数据库/mysql57/data/*
+消息队列/kafka/data/*
+消息队列/rabbitmq/data/*
+消息队列/zeekooper/datalog/*
+注册中心/consul/data/*
+elk/elasticsearch_01/data/*
+kong网关/postgres/data/*
+mongodb/data/*
+nginx/log/*
+php/log/*
+redis/data/*
