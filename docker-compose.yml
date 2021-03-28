@@ -59,7 +59,8 @@ services:
             - "8444:8444"  
         volumes: 
             - "/etc/localtime:/etc/localtime"
-        depends_on: postgres                
+        depends_on: 
+            - postgres                
         environment: 
             KONG_DATABASE: "postgres"
             KONG_PG_HOST: "172.22.22.170"
@@ -82,7 +83,8 @@ services:
             - "./kong网关/konga/lib/assets:/app/assets"
         ports: 
             - "1337:1337"
-        depends_on: kong              
+        depends_on: 
+            - kong              
         environment: 
             TOKEN_SECRET: "yyb-konga"
             DB_ADAPTER: "postgres"   
@@ -228,6 +230,9 @@ services:
     kibana:
         image: kibana:7.6.2
         container_name: kibana
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.158
         ports: 
             - "5601:5601"
         volumes: 
@@ -305,7 +310,7 @@ services:
     # php
     php74:
         image: php74
-        build: ./php74
+        build: ./php/php74
         container_name: php74
         networks: 
             wfw:
@@ -317,7 +322,7 @@ services:
             - "./php/php74/php.ini:/usr/local/etc/php/php.ini"
             - "./php/php74/www.conf:/usr/local/etc/php-fpm.d/www.conf" 
             - "./php/php74/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf" 
-            - "./php/log:/var/log"
+            - "./php/php74/log:/var/log"
         privileged: true
         restart: unless-stopped   
 
@@ -328,7 +333,7 @@ services:
         volumes: 
             - "/etc/localtime:/etc/localtime"
             - "./php/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml"
-            - "./php/log:/home"
+            - "./php/php74/log:/home"
         privileged: true
         restart: unless-stopped 
 
@@ -348,6 +353,64 @@ services:
         privileged: true
         restart: unless-stopped
         command: ["redis-server","/etc/redis.conf"] 
+
+    # jaeger all-in-one
+    jaeger:
+        image: jaegertracing/all-in-one:latest
+        container_name: jaeger-all-in
+        ports:
+            - "6831:6831/udp"
+            - "16686:16686"
+        networks:
+            wfw:
+                ipv4_address: 172.22.22.167 
+        restart: unless-stopped         
+
+    # jaeger 全家桶
+    jaeger-collector:
+        image: jaegertracing/jaeger-collector:1.22
+        container_name: jaeger-collector
+        environment: 
+            SPAN_STORAGE_TYPE: elasticsearch
+            ES_SERVER_URLS: http://172.22.22.160:9200
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.168
+        restart: unless-stopped
+    jaeger-agent:
+        image: jaegertracing/jaeger-agent:1.22
+        container_name: jaeger-agent
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.169
+        ports: 
+            - "6831:6831/udp"
+        environment: 
+            REPORTER_GRPC_HOST_PORT: 172.22.22.168:14250    
+        restart: unless-stopped
+    jaeger-query:
+        image: jaegertracing/jaeger-query:1.22
+        container_name: jaeger-query
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.159
+        ports: 
+            - "16686:16686"        
+        environment: 
+            SPAN_STORAGE_TYPE: elasticsearch
+            ES_SERVER_URLS: http://172.22.22.160:9200
+        restart: unless-stopped 
+
+    # zipkin
+    zipkin:
+        image: openzipkin/zipkin
+        container_name: zipkin
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.149
+        ports: 
+            - "9411:9411"        
+        restart: unless-stopped       
                         
 networks: 
     wfw:
