@@ -192,7 +192,7 @@ services:
             TZ: CST-8
         restart: unless-stopped
 
-    # consul
+    # consul-server
     consul:
         image: consul:1.9
         container_name: consul
@@ -204,7 +204,18 @@ services:
         volumes: 
             - "./注册中心/consul/data:/tmp/consul"    
         restart: unless-stopped
-        command: consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -node=consul -bind=172.22.22.178 -ui -client=0.0.0.0                                   
+        command: consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -node=consul -bind=172.22.22.178 -client=0.0.0.0 -ui                                   
+    # consul-client
+    consul-client:
+        image: consul:1.9
+        container_name: consul-client
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.179
+        ports:
+            - "8501:8500"
+        restart: unless-stopped
+        command: consul agent -bind=172.22.22.179 -ui -client=0.0.0.0 -data-dir /tmp/consul -node=consul-client -retry-join=172.22.22.178                                
     
     # elk
     # chmod 0777 -R elasticsearch_01/data
@@ -323,6 +334,21 @@ services:
             - "./php/php74/www.conf:/usr/local/etc/php-fpm.d/www.conf" 
             - "./php/php74/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf" 
             - "./php/php74/log:/var/log"
+            - "/Users/ningfei/www/php:/www"
+        privileged: true
+        restart: unless-stopped       
+    php56:
+        image: php:5.6.40-fpm-alpine
+        container_name: php56
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.147
+        ports: 
+            - "9002:9000"
+            - "8081:8000"
+        volumes:
+            - "/etc/localtime:/etc/localtime"
+            - "/Users/ningfei/www/php:/var/www/html"
         privileged: true
         restart: unless-stopped   
 
@@ -411,6 +437,19 @@ services:
         ports: 
             - "9411:9411"        
         restart: unless-stopped       
+    
+    # etcd
+    etcd:
+        image: etcd
+        build: ./etcd
+        container_name: etcd
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.148
+        ports: 
+            - "2379:2379"        
+            - "2380:2380"        
+        restart: unless-stopped             
                         
 networks: 
     wfw:

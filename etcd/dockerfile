@@ -1,0 +1,14 @@
+FROM alpine:latest
+
+COPY ./lib/etcd-v3.2.32-linux-amd64.tar ./etcd-v3.2.32-linux-amd64.tar
+
+RUN tar -xf etcd-v3.2.32-linux-amd64.tar \
+    && mv etcd-v3.2.32-linux-amd64 etcd \
+    && cd etcd \
+    && chmod +x ./etcd \
+    && chmod +x ./etcdctl
+
+WORKDIR /etcd
+
+ENTRYPOINT [ "./etcd" ]
+
