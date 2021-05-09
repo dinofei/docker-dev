@@ -464,9 +464,9 @@ services:
             - '4430:443'
             - '220:22'
         volumes:
-            - '.git_jenkins/gitlab/config:/etc/gitlab'
-            - '.git_jenkins/gitlab/logs:/var/log/gitlab'
-            - '.git_jenkins/gitlab/data:/var/opt/gitlab'    
+            - './git_jenkins/gitlab/config:/etc/gitlab'
+            - './git_jenkins/gitlab/logs:/var/log/gitlab'
+            - './git_jenkins/gitlab/data:/var/opt/gitlab'    
         restart: unless-stopped
                 
 networks: 

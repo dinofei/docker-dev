@@ -1,8 +1,0 @@
-2021-05-09_03:02:41.29461 1192:C 09 May 2021 03:02:41.293 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-2021-05-09_03:02:41.29748 1192:C 09 May 2021 03:02:41.294 # Redis version=5.0.9, bits=32, commit=ce878b6e, modified=0, pid=1192, just started
-2021-05-09_03:02:41.29782 1192:C 09 May 2021 03:02:41.294 # Configuration loaded
-2021-05-09_03:02:41.31944 1192:M 09 May 2021 03:02:41.319 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
-2021-05-09_03:02:41.32720 1192:M 09 May 2021 03:02:41.327 * Running mode=standalone, port=0.
-2021-05-09_03:02:41.32773 1192:M 09 May 2021 03:02:41.327 # Server initialized
-2021-05-09_03:02:41.32810 1192:M 09 May 2021 03:02:41.327 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-2021-05-09_03:02:41.33615 1192:M 09 May 2021 03:02:41.335 * The server is now ready to accept connections at /var/opt/gitlab/redis/redis.socket
