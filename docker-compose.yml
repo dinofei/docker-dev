@@ -449,8 +449,26 @@ services:
         ports: 
             - "2379:2379"        
             - "2380:2380"        
-        restart: unless-stopped             
-                        
+        restart: unless-stopped
+        
+    # gitlab
+    gitlab:
+        image: 'ulm0/gitlab:13.2.6'
+        container_name: gitlab
+        # hostname: 'gitlab.example.com'
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.147
+        ports:
+            - '800:80'
+            - '4430:443'
+            - '220:22'
+        volumes:
+            - '.git_jenkins/gitlab/config:/etc/gitlab'
+            - '.git_jenkins/gitlab/logs:/var/log/gitlab'
+            - '.git_jenkins/gitlab/data:/var/opt/gitlab'    
+        restart: unless-stopped
+                
 networks: 
     wfw:
         name: "docker_wfw"

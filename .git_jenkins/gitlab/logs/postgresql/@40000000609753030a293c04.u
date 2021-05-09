@@ -1,0 +1,28 @@
+2021-05-09_03:03:14.58924 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-05-09_03:03:14.66035 LOG:  database system was shut down at 2021-05-09 03:03:08 GMT
+2021-05-09_03:03:14.68121 LOG:  database system is ready to accept connections
+2021-05-09_03:05:36.30901 PANIC:  stuck spinlock detected at LockBufHdr, bufmgr.c:4097
+2021-05-09_03:05:36.34232 qemu: uncaught target signal 6 (Aborted) - core dumped
+2021-05-09_03:05:36.34376 LOG:  server process (PID 1689) was terminated by signal 6: Aborted
+2021-05-09_03:05:36.34517 LOG:  terminating any other active server processes
+2021-05-09_03:05:36.34647 WARNING:  terminating connection because of crash of another server process
+2021-05-09_03:05:36.34747 DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2021-05-09_03:05:36.34898 HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2021-05-09_03:05:36.35025 WARNING:  terminating connection because of crash of another server process
+2021-05-09_03:05:36.35088 DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2021-05-09_03:05:36.35180 HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2021-05-09_03:05:36.36706 WARNING:  terminating connection because of crash of another server process
+2021-05-09_03:05:36.36759 DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2021-05-09_03:05:36.36814 HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2021-05-09_03:05:36.37777 LOG:  all server processes terminated; reinitializing
+2021-05-09_03:05:36.39587 LOG:  database system was interrupted; last known up at 2021-05-09 03:03:21 GMT
+2021-05-09_03:05:36.67869 FATAL:  the database system is in recovery mode
+2021-05-09_03:05:36.88061 FATAL:  the database system is in recovery mode
+2021-05-09_03:05:37.69888 LOG:  could not open file "./server.crt": Operation not permitted
+2021-05-09_03:05:37.69931 LOG:  could not open file "./server.key": Operation not permitted
+2021-05-09_03:05:37.70706 LOG:  database system was not properly shut down; automatic recovery in progress
+2021-05-09_03:05:37.72569 LOG:  redo starts at 0/15E2760
+2021-05-09_03:05:37.72777 LOG:  invalid record length at 0/15E2788: wanted 24, got 0
+2021-05-09_03:05:37.72813 LOG:  redo done at 0/15E2760
+2021-05-09_03:05:37.72856 LOG:  last completed transaction was at log time 2021-05-09 03:03:21.705834+00
+2021-05-09_03:05:37.74423 LOG:  database system is ready to accept connections

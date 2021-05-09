@@ -1,0 +1,6 @@
+Raven 2.9.0 configured not to capture errors: DSN not set
+An enum element in Ci::Runner uses the prefix 'not_'. This will cause a conflict with auto generated negative scopes.
+Creating scope :without_statuses. Overwriting existing method CommitStatus.without_statuses.
+Creating scope :of_projects. Overwriting existing method MergeRequest.of_projects.
+Creating scope :join_project. Overwriting existing method MergeRequest.join_project.
+Creating scope :references_project. Overwriting existing method MergeRequest.references_project.

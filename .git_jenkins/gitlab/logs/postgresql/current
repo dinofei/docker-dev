@@ -1,0 +1,25 @@
+2021-05-09_03:23:48.91007 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-05-09_03:23:49.08537 LOG:  database system was interrupted; last known up at 2021-05-09 03:20:39 GMT
+2021-05-09_03:23:51.90556 FATAL:  the database system is starting up
+2021-05-09_03:23:52.06873 FATAL:  the database system is starting up
+2021-05-09_03:23:54.25382 FATAL:  the database system is starting up
+2021-05-09_03:23:54.41136 FATAL:  the database system is starting up
+2021-05-09_03:23:55.15134 LOG:  could not open file "./server.crt": Operation not permitted
+2021-05-09_03:23:55.15334 LOG:  could not open file "./server.key": Operation not permitted
+2021-05-09_03:23:55.17374 LOG:  database system was not properly shut down; automatic recovery in progress
+2021-05-09_03:23:55.19969 LOG:  redo starts at 0/1708F30
+2021-05-09_03:23:55.21024 LOG:  invalid record length at 0/170A5D0: wanted 24, got 0
+2021-05-09_03:23:55.21231 LOG:  redo done at 0/1708F30
+2021-05-09_03:23:55.24367 LOG:  database system is ready to accept connections
+2021-05-09_03:24:48.31361 ERROR:  relation "features" does not exist at character 454
+2021-05-09_03:24:48.31506 STATEMENT:  SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+2021-05-09_03:24:48.31606 	       pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod,
+2021-05-09_03:24:48.31667 	       c.collname, col_description(a.attrelid, a.attnum) AS comment
+2021-05-09_03:24:48.31746 	  FROM pg_attribute a
+2021-05-09_03:24:48.31825 	  LEFT JOIN pg_attrdef d ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+2021-05-09_03:24:48.31906 	  LEFT JOIN pg_type t ON a.atttypid = t.oid
+2021-05-09_03:24:48.31967 	  LEFT JOIN pg_collation c ON a.attcollation = c.oid AND a.attcollation <> t.typcollation
+2021-05-09_03:24:48.32034 	 WHERE a.attrelid = '"features"'::regclass
+2021-05-09_03:24:48.32100 	   AND a.attnum > 0 AND NOT a.attisdropped
+2021-05-09_03:24:48.32145 	 ORDER BY a.attnum
+2021-05-09_03:24:48.32224 	

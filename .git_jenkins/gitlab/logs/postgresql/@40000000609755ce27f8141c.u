@@ -1,0 +1,8 @@
+2021-05-09_03:20:36.85370 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2021-05-09_03:20:36.97550 LOG:  database system was interrupted; last known up at 2021-05-09 03:16:57 GMT
+2021-05-09_03:20:39.53862 LOG:  could not open file "./server.crt": Operation not permitted
+2021-05-09_03:20:39.54200 LOG:  could not open file "./server.key": Operation not permitted
+2021-05-09_03:20:39.55642 LOG:  database system was not properly shut down; automatic recovery in progress
+2021-05-09_03:20:39.57258 LOG:  invalid record length at 0/1708EC0: wanted 24, got 0
+2021-05-09_03:20:39.57319 LOG:  redo is not required
+2021-05-09_03:20:39.59548 LOG:  database system is ready to accept connections
