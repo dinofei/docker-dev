@@ -12,4 +12,5 @@ php/log/*
 redis/data/*
 git_jenkins/gitlab/config/*
 git_jenkins/gitlab/data/*
-git_jenkins/gitlab/log/*
+git_jenkins/gitlab/logs/*
+git_jenkins/jenkins/data/*

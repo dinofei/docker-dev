@@ -453,7 +453,7 @@ services:
         
     # gitlab
     gitlab:
-        image: 'ulm0/gitlab:13.2.6'
+        image: 'gitlab/gitlab-ce:latest'
         container_name: gitlab
         # hostname: 'gitlab.example.com'
         networks: 
@@ -470,7 +470,7 @@ services:
         restart: unless-stopped
     # jenkins
     jenkins:
-        image: 'jenkins4eval/jenkins:slim-arm'
+        image: 'jenkins/jenkins:lts'
         container_name: jenkins
         networks: 
             wfw:
@@ -478,6 +478,8 @@ services:
         ports:
             - '8080:8080'
             - '50000:50000'
+        volumes: 
+            - "./git_jenkins/jenkins/data:/var/jenkins_home"    
         restart: unless-stopped
                 
 networks: 
