@@ -468,6 +468,17 @@ services:
             - './git_jenkins/gitlab/logs:/var/log/gitlab'
             - './git_jenkins/gitlab/data:/var/opt/gitlab'    
         restart: unless-stopped
+    # jenkins
+    jenkins:
+        image: 'jenkins4eval/jenkins:slim-arm'
+        container_name: jenkins
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.146
+        ports:
+            - '8080:8080'
+            - '50000:50000'
+        restart: unless-stopped
                 
 networks: 
     wfw:
