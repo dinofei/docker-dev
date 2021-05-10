@@ -10,3 +10,6 @@ mongodb/data/*
 nginx/log/*
 php/log/*
 redis/data/*
+git_jenkins/gitlab/config/*
+git_jenkins/gitlab/data/*
+git_jenkins/gitlab/log/*
