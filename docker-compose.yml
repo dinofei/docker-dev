@@ -337,6 +337,24 @@ services:
             - "/Users/ningfei/www/php:/www"
         privileged: true
         restart: unless-stopped       
+    php72:
+        image: php72
+        build: ./php/php74
+        container_name: php72
+        networks: 
+            wfw:
+                ipv4_address: 172.22.22.165
+        ports: 
+            - "9001:9000"
+        volumes:
+            - "/etc/localtime:/etc/localtime"
+            - "./php/php74/php.ini:/usr/local/etc/php/php.ini"
+            - "./php/php74/www.conf:/usr/local/etc/php-fpm.d/www.conf" 
+            - "./php/php74/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf" 
+            - "./php/php74/log:/var/log"
+            - "/Users/ningfei/www/php:/www"
+        privileged: true
+        restart: unless-stopped       
     php56:
         image: php:5.6.40-fpm-alpine
         container_name: php56
